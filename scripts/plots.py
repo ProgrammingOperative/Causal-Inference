@@ -12,7 +12,10 @@ import plotly.graph_objects as go
 
 class Plot:
 
-    def feature_vs_targetcom(self, df, x):    
+    def __init__(self) -> None:
+        pass
+
+    def feature_vs_target(self, df, x):    
 
         fig,ax = plt.subplots(nrows = 10, ncols = 3, figsize = (12,24),dpi=80)
         axes = ax.ravel()
