@@ -13,4 +13,5 @@ class DataClean:
         return self.df
 
         
-    
+    def save_clean(self, name):
+      self.df.to_csv(f'../data/{name}.csv', index=False)
