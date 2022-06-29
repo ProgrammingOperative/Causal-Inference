@@ -16,3 +16,4 @@ class DataInfor:
         null_size = (self.df.isnull().sum()).sum()
         percentage = round((null_size / df_size) * 100, 2)
         return f"Data Frame contain null values of { percentage }"
+    
