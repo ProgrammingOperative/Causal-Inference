@@ -24,7 +24,7 @@ class Preprocess:
         elif (mode == "standard"):
             scaler = StandardScaler()
 
-        return pd.DataFrame(scaler.fit_transform(df), columns=columns)
+        return pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
 
 
     def normalizer(self, df, columns):
