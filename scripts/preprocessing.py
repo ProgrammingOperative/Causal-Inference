@@ -30,6 +30,11 @@ class Preprocess:
         norm = Normalizer()
         return pd.DataFrame(norm.fit_transform(df), columns=columns)
 
+
+    def scale_and_normalize(self, df, scaler="minmax"):
+        columns = df.columns
+        return self.normalizer(self.scaler(df, columns, scaler), columns)
+
         
     def save_clean(self, name):
       self.df.to_csv(f'../data/{name}.csv', index=False)
