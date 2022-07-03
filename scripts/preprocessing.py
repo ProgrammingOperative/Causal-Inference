@@ -16,10 +16,10 @@ class Preprocess:
         return self.df
 
 
-    def scaler(self, df, columns, mode="minmax"):
+    def scaler(self, df, mode="minmax"):
         if (mode == "minmax"):
             minmax_scaler = MinMaxScaler()
-            return pd.DataFrame(minmax_scaler.fit_transform(df), columns=columns)
+            return pd.DataFrame(minmax_scaler.fit_transform(df), columns=df.columns)
 
         elif (mode == "standard"):
             scaler = StandardScaler()
