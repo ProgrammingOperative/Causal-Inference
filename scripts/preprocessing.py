@@ -1,7 +1,8 @@
 from collections import Counter
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
-class DataClean:
+class Preprocess:
     def __init__(self, df) -> None:
         self.df = df
     
@@ -12,6 +13,17 @@ class DataClean:
                 self.df[col]=np.where(self.df[col]>upper_quartile,self.df[col].median(),np.where(self.df[col]<lower_quartile,self.df[col].median(),self.df[col]))
         return self.df
 
+
+    def scaler(self, df, columns, mode="minmax"):
+
+        if (mode == "minmax"):
+            minmax_scaler = MinMaxScaler()
+            return pd.DataFrame(minmax_scaler.fit_transform(df), columns=columns)
+
+        elif (mode == "standard"):
+            scaler = StandardScaler()
+
+        return pd.DataFrame(scaler.fit_transform(df), columns=columns)
         
     def save_clean(self, name):
       self.df.to_csv(f'../data/{name}.csv', index=False)
