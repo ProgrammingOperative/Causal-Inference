@@ -11,8 +11,8 @@ class Preprocess:
     def fix_outliers(self, df):
         column_name=list(df.columns[2:])
         for col in column_name:
-                lower_quartile, upper_quartile = self.df[col].quantile(0.25), self.df[col].quantile(0.75)
-                self.df[col]=np.where(self.df[col]>upper_quartile,self.df[col].median(),np.where(self.df[col]<lower_quartile, self.df[col].median(), self.df[col]))
+                lower_quartile, upper_quartile = df[col].quantile(0.25), df[col].quantile(0.75)
+                self.df[col]=np.where(df[col]>upper_quartile,df[col].median(),np.where(df[col]<lower_quartile, df[col].median(), df[col]))
         return self.df
 
 
@@ -37,5 +37,5 @@ class Preprocess:
         return self.normalizer(self.scaler(df, columns, scaler), columns)
 
         
-    def save_clean(self, name):
-      self.df.to_csv(f'../data/{name}.csv', index=False)
+    def save_clean(self,df, name):
+        df.to_csv(f'../data/{name}.csv', index=False)
