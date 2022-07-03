@@ -1,21 +1,22 @@
 from collections import Counter
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, Normalizer  
+import pandas as pd
+
 
 class Preprocess:
-    def __init__(self, df) -> None:
-        self.df = df
+    def __init__(self) -> None:
+        pass
     
-    def fix_outliers(self):
-        column_name=list(self.df.columns[2:])
+    def fix_outliers(self, df):
+        column_name=list(df.columns[2:])
         for col in column_name:
                 lower_quartile, upper_quartile = self.df[col].quantile(0.25), self.df[col].quantile(0.75)
-                self.df[col]=np.where(self.df[col]>upper_quartile,self.df[col].median(),np.where(self.df[col]<lower_quartile,self.df[col].median(),self.df[col]))
+                self.df[col]=np.where(self.df[col]>upper_quartile,self.df[col].median(),np.where(self.df[col]<lower_quartile, self.df[col].median(), self.df[col]))
         return self.df
 
 
     def scaler(self, df, columns, mode="minmax"):
-
         if (mode == "minmax"):
             minmax_scaler = MinMaxScaler()
             return pd.DataFrame(minmax_scaler.fit_transform(df), columns=columns)
