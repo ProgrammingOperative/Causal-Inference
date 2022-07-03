@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 
 
 class Plot:
-
+    
     def __init__(self) -> None:
         pass
 
