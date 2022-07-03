@@ -1,6 +1,6 @@
 from collections import Counter
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, Normalizer  
 
 class Preprocess:
     def __init__(self, df) -> None:
@@ -24,6 +24,12 @@ class Preprocess:
             scaler = StandardScaler()
 
         return pd.DataFrame(scaler.fit_transform(df), columns=columns)
+
+
+    def normalizer(self, df, columns):
+        norm = Normalizer()
+        return pd.DataFrame(norm.fit_transform(df), columns=columns)
+
         
     def save_clean(self, name):
       self.df.to_csv(f'../data/{name}.csv', index=False)
