@@ -46,7 +46,10 @@ class Plot:
     def vis_sm(self, sm):
         viz = plot_structure(
             sm,
-            graph_attributes={"scale": "2.0", 'size': 2.5},
+            graph_attributes={"scale": "0.5"},
             all_node_attributes=NODE_STYLE.WEAK,
-            all_edge_attributes=EDGE_STYLE.WEAK)
+            all_edge_attributes=EDGE_STYLE.WEAK,
+             prog='fdp',)
+
+
         return Image(viz.draw(format='png'))
