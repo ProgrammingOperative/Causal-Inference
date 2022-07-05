@@ -45,33 +45,33 @@ class Plot:
 
     def vis_sm(self, sm):
 
-        node_attributes = {
-            "diagnosis": { 
-                "shape": "star",
-                "style": "filled",
-                "width": 0.6,
-                "penwidth": "1", 
-                "color": "#4a90e2d9",
-                "orientation": 25, 
-            },
-            "fontsize": 0.1
-        }
+        # node_attributes = {
+        #     "diagnosis": { 
+        #         "shape": "star",
+        #         "style": "filled",
+        #         "width": 0.6,
+        #         "penwidth": "1", 
+        #         "color": "#4a90e2d9",
+        #         "orientation": 25, 
+        #     },
+        #     "fontsize": 0.1
+        # }
 
-        graph_attributes = {
-            "scale": "1",
-            "size": 5,
-            "label": "Breast Cancer Causality model",
-            "fontcolor": "#FFFFFFD9",
-            "fontname": "Helvetica",
-            "fontsize": 25, # font size of the graph title
-            "dpi": 200,  # resolution
-            "labeljust": "l",  # left
-            "labelloc": "t",  # top
-            }
+        # graph_attributes = {
+        #     "scale": "1",
+        #     "size": 5,
+        #     "label": "Breast Cancer Causality model",
+        #     "fontcolor": "#FFFFFFD9",
+        #     "fontname": "Helvetica",
+        #     "fontsize": 25, # font size of the graph title
+        #     "dpi": 200,  # resolution
+        #     "labeljust": "l",  # left
+        #     "labelloc": "t",  # top
+        #     }
 
         viz = plot_structure(
             sm,
-            graph_attributes= graph_attributes,
+            graph_attributes= {"scale":"5", "size":5},
             all_node_attributes=NODE_STYLE.WEAK,
             all_edge_attributes=EDGE_STYLE.WEAK
             )
